@@ -8,23 +8,20 @@ class MatrixmultiplierTest extends TestCase
 {
     public function test_matrix_product(){
 
-        $a = array([
+        $a = [
             [1,2],
             [3,4]
-        ]);
-        $b = array([
-            [5,6],
-            [7,8]
-        ]);
+        ];
+        $b = [[5,6], [7,8]];
 
         $matrix_multiplier = new Matrixmultiplier($a,$b);
 
 
-        $answer = array([
+        $answer = [
             ["S","V"],
             ["AQ","AX"]
-        ]);
+        ];
 
-        $this->assertTrue($answer == $matrix_multiplier->mult_matrix());
+        $this->assertEquals($answer, $matrix_multiplier->mult_matrix());
     }
 }
