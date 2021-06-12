@@ -26,8 +26,6 @@ class Matrixmultiplier
 
         $prod = array_fill(0, $col2, array_fill(0, $row1, 0));
 
-//        return $prod;
-
         //Performs product of matrices a and b. Store the result in matrix prod
         for ($i = 0; $i < $row1; $i++) {
             for ($j = 0; $j < $col2; $j++) {
@@ -48,13 +46,14 @@ class Matrixmultiplier
 
     public function encryptMatrixResult($value)
     {
+
         $alphabets = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
 //        return $alphabets[0];
-        if ($value > 0){
+        if ($value > 0){ // no letter is assigned to 0 value hence return 0
             if ($value >= 26){
 
-                $letter = (string)$alphabets[0];
+                $letter = $alphabets[0];
 
                 $times = ($value - ($value % 26)) / 26 ;
 
@@ -62,21 +61,20 @@ class Matrixmultiplier
 
                 if ($value % 26 == 0){
                     $letter = $alphabets[25];
-                    $str = str_repeat((string)$letter,$times);
+                    $str = str_repeat($letter,$times);
                 }else{
                     $reminder = $value % 26;
-                    $str = $str.$alphabets[$reminder];
+                    $str = $str.$alphabets[$reminder-1];
                 }
 
                 return $str;
 
             }else{
-                return (string)$alphabets[$value];
+                return $alphabets[$value-1];
             }
         }else{
             return $value;
         }
-
 
     }
 }
